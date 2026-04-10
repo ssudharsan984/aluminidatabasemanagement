@@ -5,7 +5,7 @@ const path = require('path');
 
 const app = express();
 
-const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://ssudharsan984_db_user:Dgcsx2PQV3dsTP6F@cluster0.zkjpzjv.mongodb.net/alumni_db?retryWrites=true&w=majority&authSource=admin';
+const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://ssudharsan984_db_user:sudhar123@cluster0.zkjpzjv.mongodb.net/alumniDB?retryWrites=true&w=majority';
 
 mongoose.connect(MONGO_URI)
   .then(() => console.log('✅ Connected to MongoDB Atlas'))

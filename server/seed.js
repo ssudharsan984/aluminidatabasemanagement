@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Alumni = require('./models/Alumni');
 const Event = require('./models/Event');
 
-const MONGO_URI = 'mongodb+srv://ssudharsan984_db_user:Dgcsx2PQV3dsTP6F@cluster0.zkjpzjv.mongodb.net/alumni_db?retryWrites=true&w=majority';
+const MONGO_URI = 'mongodb+srv://ssudharsan984_db_user:sudhar123@cluster0.zkjpzjv.mongodb.net/alumniDB?retryWrites=true&w=majority';
 
 const alumniData = [
   { name: 'Arjun Kumar',      email: 'arjun.kumar@gmail.com',    phone: '9876543210', batchYear: 2018, department: 'Computer Science',      company: 'Google',       designation: 'Software Engineer',        location: 'Bangalore',  linkedin: 'linkedin.com/in/arjunkumar' },

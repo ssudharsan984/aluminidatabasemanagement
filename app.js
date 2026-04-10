@@ -5,7 +5,7 @@ const methodOverride = require('method-override');
 const app = express();
 
 // MongoDB Atlas Connection
-mongoose.connect('mongodb+srv://ssudharsan984_db_user:Dgcsx2PQV3dsTP6F@cluster0.zkjpzjv.mongodb.net/alumni_db?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://ssudharsan984_db_user:sudhar123@cluster0.zkjpzjv.mongodb.net/alumniDB?retryWrites=true&w=majority')
   .then(() => console.log('✅ Connected to MongoDB Atlas'))
   .catch(err => console.log('❌ MongoDB Error:', err));
 
