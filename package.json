@@ -1,0 +1,8 @@
+{
+  "name": "alumni-management",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "cd client && npm install && npm run build",
+    "start": "cd server && node index.js"
+  }
+}

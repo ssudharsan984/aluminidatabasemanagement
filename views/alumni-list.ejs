@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Alumni - Alumni Portal</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<%- include('partials/sidebar', { page: 'alumni' }) %>
+<div class="main">
+  <div class="topbar">
+    <h1>Alumni Management</h1>
+    <div class="user-info"><div class="avatar">A</div><span><%= loggedUser %></span></div>
+  </div>
+  <div class="content">
+    <% if (msg) { %><div class="alert alert-success">✅ <%= msg %></div><% } %>
+    <% if (error) { %><div class="alert alert-danger">❌ <%= error %></div><% } %>
+
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+      <form method="GET" action="/alumni" class="search-bar" style="margin:0;flex:1;margin-right:16px;">
+        <input type="text" name="search" placeholder="🔍 Search by name, email, department, company, batch..." value="<%= search || '' %>"/>
+        <button type="submit" class="btn btn-primary">Search</button>
+        <% if (search) { %><a href="/alumni" class="btn btn-warning">Clear</a><% } %>
+      </form>
+      <a href="/alumni/add" class="btn btn-success">➕ Add Alumni</a>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><h3>👥 Alumni Records (<%= alumniList.length %> found)</h3></div>
+      <table>
+        <thead><tr><th>#</th><th>Name</th><th>Email</th><th>Phone</th><th>Batch</th><th>Department</th><th>Company</th><th>Designation</th><th>Location</th><th>Actions</th></tr></thead>
+        <tbody>
+          <% alumniList.forEach((a, i) => { %>
+          <tr>
+            <td><%= i+1 %></td>
+            <td><strong><%= a.name %></strong></td>
+            <td><%= a.email %></td>
+            <td><%= a.phone %></td>
+            <td><span class="badge badge-blue"><%= a.batchYear %></span></td>
+            <td><%= a.department %></td>
+            <td><%= a.company %></td>
+            <td><%= a.designation %></td>
+            <td><%= a.location %></td>
+            <td>
+              <a href="/alumni/edit/<%= a._id %>" class="btn btn-warning btn-sm">✏️ Edit</a>
+              <a href="/alumni/delete/<%= a._id %>" class="btn btn-danger btn-sm" onclick="return confirm('Delete <%= a.name %>?')">🗑️ Delete</a>
+            </td>
+          </tr>
+          <% }) %>
+          <% if (!alumniList.length) { %><tr><td colspan="10" style="text-align:center;color:#aaa;padding:40px">No alumni records found</td></tr><% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</body>
+</html>

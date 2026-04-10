@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Events - Alumni Portal</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<%- include('partials/sidebar', { page: 'events' }) %>
+<div class="main">
+  <div class="topbar">
+    <h1>Events Management</h1>
+    <div class="user-info"><div class="avatar">A</div><span><%= loggedUser %></span></div>
+  </div>
+  <div class="content">
+    <% if (msg) { %><div class="alert alert-success">✅ <%= msg %></div><% } %>
+    <% if (error) { %><div class="alert alert-danger">❌ <%= error %></div><% } %>
+
+    <div style="display:flex;justify-content:flex-end;margin-bottom:20px;">
+      <a href="/events/add" class="btn btn-success">➕ Add Event</a>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><h3>📅 All Events</h3></div>
+      <table>
+        <thead><tr><th>#</th><th>Title</th><th>Date</th><th>Location</th><th>Description</th><th>Actions</th></tr></thead>
+        <tbody>
+          <% eventList.forEach((e, i) => { %>
+          <tr>
+            <td><%= i+1 %></td>
+            <td><strong><%= e.title %></strong></td>
+            <td><span class="badge badge-green"><%= e.eventDate %></span></td>
+            <td><%= e.location %></td>
+            <td><%= e.description %></td>
+            <td>
+              <a href="/events/edit/<%= e._id %>" class="btn btn-warning btn-sm">✏️ Edit</a>
+              <a href="/events/delete/<%= e._id %>" class="btn btn-danger btn-sm" onclick="return confirm('Delete this event?')">🗑️ Delete</a>
+            </td>
+          </tr>
+          <% }) %>
+          <% if (!eventList.length) { %><tr><td colspan="6" style="text-align:center;color:#aaa;padding:40px">No events found</td></tr><% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</body>
+</html>

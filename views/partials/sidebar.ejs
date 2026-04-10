@@ -1,0 +1,14 @@
+<div class="sidebar">
+  <div class="sidebar-logo">
+    <h2>🎓 AlumniHub</h2>
+    <p>Management Portal</p>
+  </div>
+  <nav>
+    <a href="/dashboard" class="<%= page === 'dashboard' ? 'active' : '' %>"><span class="icon">📊</span><span>Dashboard</span></a>
+    <a href="/alumni"    class="<%= page === 'alumni'    ? 'active' : '' %>"><span class="icon">👥</span><span>Alumni</span></a>
+    <a href="/events"    class="<%= page === 'events'    ? 'active' : '' %>"><span class="icon">📅</span><span>Events</span></a>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="/logout"><span>🚪</span><span>Logout</span></a>
+  </div>
+</div>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard - Alumni Portal</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<%- include('partials/sidebar', { page: 'dashboard' }) %>
+<div class="main">
+  <div class="topbar">
+    <h1>Dashboard</h1>
+    <div class="user-info">
+      <div class="avatar">A</div>
+      <span>Welcome, <strong><%= loggedUser %></strong></span>
+    </div>
+  </div>
+  <div class="content">
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-icon blue">👥</div><div class="stat-info"><h3><%= totalAlumni %></h3><p>Total Alumni</p></div></div>
+      <div class="stat-card"><div class="stat-icon green">📅</div><div class="stat-info"><h3><%= totalEvents %></h3><p>Total Events</p></div></div>
+      <div class="stat-card"><div class="stat-icon orange">🏢</div><div class="stat-info"><h3><%= totalDepts %></h3><p>Departments</p></div></div>
+      <div class="stat-card"><div class="stat-icon purple">📍</div><div class="stat-info"><h3><%= totalLocations %></h3><p>Locations</p></div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><h3>👥 Recent Alumni</h3><a href="/alumni" class="btn btn-primary btn-sm">View All</a></div>
+      <table>
+        <thead><tr><th>#</th><th>Name</th><th>Email</th><th>Batch</th><th>Department</th><th>Company</th></tr></thead>
+        <tbody>
+          <% recentAlumni.forEach((a, i) => { %>
+          <tr>
+            <td><%= i+1 %></td>
+            <td><strong><%= a.name %></strong></td>
+            <td><%= a.email %></td>
+            <td><span class="badge badge-blue"><%= a.batchYear %></span></td>
+            <td><%= a.department %></td>
+            <td><%= a.company %></td>
+          </tr>
+          <% }) %>
+          <% if (!recentAlumni.length) { %><tr><td colspan="6" style="text-align:center;color:#aaa;padding:30px">No alumni records yet</td></tr><% } %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><h3>📅 Upcoming Events</h3><a href="/events" class="btn btn-success btn-sm">View All</a></div>
+      <table>
+        <thead><tr><th>#</th><th>Title</th><th>Date</th><th>Location</th><th>Description</th></tr></thead>
+        <tbody>
+          <% upcomingEvents.forEach((e, i) => { %>
+          <tr>
+            <td><%= i+1 %></td>
+            <td><strong><%= e.title %></strong></td>
+            <td><span class="badge badge-green"><%= e.eventDate %></span></td>
+            <td><%= e.location %></td>
+            <td><%= e.description %></td>
+          </tr>
+          <% }) %>
+          <% if (!upcomingEvents.length) { %><tr><td colspan="5" style="text-align:center;color:#aaa;padding:30px">No events yet</td></tr><% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</body>
+</html>
